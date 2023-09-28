@@ -3,4 +3,3 @@ class Appointment < ApplicationRecord
   belongs_to :doctor
   has_one :location
 end
-

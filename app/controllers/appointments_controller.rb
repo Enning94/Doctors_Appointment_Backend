@@ -1,5 +1,5 @@
 class AppointmentsController < ApplicationController
-  before_action :set_appointment, only: %i[ show update destroy ]
+  before_action :set_appointment, only: %i[show update destroy]
 
   # GET /appointments
   def index
@@ -39,13 +39,15 @@ class AppointmentsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_appointment
-      @appointment = Appointment.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def appointment_params
-      params.require(:appointment).permit(:patient_id, :doctor_id, :location_id, :appointment_date, :appointment_duration, :facility_fee)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_appointment
+    @appointment = Appointment.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def appointment_params
+    params.require(:appointment).permit(:patient_id, :doctor_id, :location_id, :appointment_date,
+                                        :appointment_duration, :facility_fee)
+  end
 end
