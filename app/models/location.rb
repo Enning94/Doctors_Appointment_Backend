@@ -1,4 +1,4 @@
 class Location < ApplicationRecord
-  belongs_to :doctor
-  belongs_to :appointment
+  has_many :doctors
+  has_many :appointments
 end
