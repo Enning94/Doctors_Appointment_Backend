@@ -1,4 +1,4 @@
-class LocationsController < ApplicationController
+class Api::LocationsController < ApplicationController
   before_action :set_location, only: %i[show update destroy]
 
   # GET /locations
@@ -47,6 +47,6 @@ class LocationsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def location_params
-    params.require(:location).permit(:city)
+    params.permit(:city)
   end
 end
