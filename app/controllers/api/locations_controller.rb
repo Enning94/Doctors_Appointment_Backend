@@ -18,9 +18,9 @@ class Api::LocationsController < ApplicationController
     @location = Location.new(location_params)
 
     if @location.save
-      render json: @location, status: :created, location: @location
+      render json: @location, status: :created, location: @locations
     else
-      render json: @location.errors, status: :unprocessable_entity
+      render json: @locations.errors, status: :unprocessable_entity
     end
   end
 
@@ -47,6 +47,6 @@ class Api::LocationsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def location_params
-    params.permit(:city)
+    params.require(:location).permit(:city)
   end
 end
