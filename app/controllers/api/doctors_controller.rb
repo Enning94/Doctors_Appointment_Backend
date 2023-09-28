@@ -18,7 +18,7 @@ class Api::DoctorsController < ApplicationController
     @doctor = Doctor.new(doctor_params)
 
     if @doctor.save
-      render json: @doctor, status: :created, location: @doctor
+      render json: @doctor, status: :created, location: @doctors
     else
       render json: @doctor.errors, status: :unprocessable_entity
     end
