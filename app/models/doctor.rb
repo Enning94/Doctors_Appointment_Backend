@@ -1,4 +1,4 @@
 class Doctor < ApplicationRecord
-  has_one :location
-  has_many :patients
+  belongs_to :location
+  has_many :patients, through: :appointments
 end
