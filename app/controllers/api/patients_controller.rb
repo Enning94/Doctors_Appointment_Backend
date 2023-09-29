@@ -49,4 +49,3 @@ class  Api::PatientsController < ApplicationController
       params.require(:patient).permit(:username, :email, :password)
     end
 end
-git commit -m "recreate models and controllers"   
