@@ -1,4 +1,4 @@
-class  Api::DoctorsController < ApplicationController
+class Api::DoctorsController < ApplicationController
   before_action :set_doctor, only: %i[show update destroy]
 
   # GET /doctors
@@ -26,7 +26,7 @@ class  Api::DoctorsController < ApplicationController
   # total appointment fee
   def total_appointment_fee
     @doctor = Doctor.find(params[:id])
-    doc@doctor
+    doc @doctor
   end
 
   # PATCH/PUT /doctors/1

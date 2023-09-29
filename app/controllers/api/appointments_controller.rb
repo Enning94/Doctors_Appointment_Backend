@@ -1,4 +1,4 @@
-class  Api::AppointmentsController < ApplicationController
+class Api::AppointmentsController < ApplicationController
   before_action :set_appointment, only: %i[show update destroy]
 
   # GET /appointments
