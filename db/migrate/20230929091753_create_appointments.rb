@@ -6,7 +6,7 @@ class CreateAppointments < ActiveRecord::Migration[7.0]
       t.datetime :appointment_date, null: false
       t.string :city, null: false
       t.integer :appointment_duration, null: false
-      t.decimal :facility_fee, null: false, default: 200
+      t.decimal :facility_fee, default: 200
 
 
       t.timestamps
