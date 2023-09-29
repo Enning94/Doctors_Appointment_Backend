@@ -3,15 +3,15 @@
 one:
   patient: one
   doctor: one
-  location: one
-  appointment_date: 2023-09-28 11:33:58
+  appointment_date: 2023-09-29 09:17:53
+  city: MyString
   appointment_duration: 1
   facility_fee: 9.99
 
 two:
   patient: two
   doctor: two
-  location: two
-  appointment_date: 2023-09-28 11:33:58
+  appointment_date: 2023-09-29 09:17:53
+  city: MyString
   appointment_duration: 1
   facility_fee: 9.99
