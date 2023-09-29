@@ -3,10 +3,11 @@ class CreateAppointments < ActiveRecord::Migration[7.0]
     create_table :appointments do |t|
       t.references :patient, null: false, foreign_key: true
       t.references :doctor, null: false, foreign_key: true
-      t.references :location, null: false, foreign_key: true
-      t.datetime :appointment_date
-      t.integer :appointment_duration
-      t.decimal :facility_fee
+      t.datetime :appointment_date, null: false
+      t.string :city, null: false
+      t.integer :appointment_duration, null: false
+      t.decimal :facility_fee, null: false, default: 200
+
 
       t.timestamps
     end

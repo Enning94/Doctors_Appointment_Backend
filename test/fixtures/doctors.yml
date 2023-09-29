@@ -6,7 +6,6 @@ one:
   bio: MyText
   specialization: MyString
   consultation_fee: 9.99
-  location: one
 
 two:
   name: MyString
@@ -14,4 +13,3 @@ two:
   bio: MyText
   specialization: MyString
   consultation_fee: 9.99
-  location: two
