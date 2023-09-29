@@ -23,12 +23,6 @@ class Api::V1::DoctorsController < ApplicationController
     end
   end
 
-  # total appointment fee
-  def total_appointment_fee
-    @doctor = Doctor.find(params[:id])
-    doc @doctor
-  end
-
   # PATCH/PUT /doctors/1
   def update
     if @doctor.update(doctor_params)
