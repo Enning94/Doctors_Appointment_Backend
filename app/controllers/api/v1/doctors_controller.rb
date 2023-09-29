@@ -1,10 +1,9 @@
-class Api::DoctorsController < ApplicationController
+class Api::V1::DoctorsController < ApplicationController
   before_action :set_doctor, only: %i[show update destroy]
 
   # GET /doctors
   def index
     @doctors = Doctor.all
-
     render json: @doctors
   end
 
@@ -18,10 +17,16 @@ class Api::DoctorsController < ApplicationController
     @doctor = Doctor.new(doctor_params)
 
     if @doctor.save
-      render json: @doctor, status: :created, location: @doctors
+      render json: @doctor, status: :created, location: @doctor
     else
       render json: @doctor.errors, status: :unprocessable_entity
     end
+  end
+
+  # total appointment fee
+  def total_appointment_fee
+    @doctor = Doctor.find(params[:id])
+    doc @doctor
   end
 
   # PATCH/PUT /doctors/1
@@ -47,6 +52,6 @@ class Api::DoctorsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def doctor_params
-    params.require(:doctor).permit(:name, :profile_pic, :bio, :specialization, :consultation_fee, :location_id)
+    params.require(:doctor).permit(:name, :profile_pic, :bio, :specialization, :consultation_fee)
   end
 end

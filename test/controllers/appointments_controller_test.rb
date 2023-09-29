@@ -15,9 +15,8 @@ class AppointmentsControllerTest < ActionDispatch::IntegrationTest
       post appointments_url,
            params: { appointment: { appointment_date: @appointment.appointment_date,
                                     appointment_duration: @appointment.appointment_duration,
-                                    doctor_id: @appointment.doctor_id,
+                                    city: @appointment.city, doctor_id: @appointment.doctor_id,
                                     facility_fee: @appointment.facility_fee,
-                                    location_id: @appointment.location_id,
                                     patient_id: @appointment.patient_id } }, as: :json
     end
 
@@ -33,9 +32,8 @@ class AppointmentsControllerTest < ActionDispatch::IntegrationTest
     patch appointment_url(@appointment),
           params: { appointment: { appointment_date: @appointment.appointment_date,
                                    appointment_duration: @appointment.appointment_duration,
-                                   doctor_id: @appointment.doctor_id,
+                                   city: @appointment.city, doctor_id: @appointment.doctor_id,
                                    facility_fee: @appointment.facility_fee,
-                                   location_id: @appointment.location_id,
                                    patient_id: @appointment.patient_id } }, as: :json
     assert_response :success
   end

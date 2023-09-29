@@ -1,4 +1,4 @@
-class Api::AppointmentsController < ApplicationController
+class Api::V1::AppointmentsController < ApplicationController
   before_action :set_appointment, only: %i[show update destroy]
 
   # GET /appointments
@@ -47,7 +47,7 @@ class Api::AppointmentsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def appointment_params
-    params.require(:appointment).permit(:patient_id, :doctor_id, :location_id, :appointment_date,
+    params.require(:appointment).permit(:patient_id, :doctor_id, :appointment_date, :city,
                                         :appointment_duration, :facility_fee)
   end
 end
