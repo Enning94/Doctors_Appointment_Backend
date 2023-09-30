@@ -18,7 +18,7 @@ class Api::V1::AppointmentsController < ApplicationController
     @appointment = Appointment.new(appointment_params)
 
     if @appointment.save
-      render json: @appointment, status: :created, location: @appointment
+      render json: 'Appointment created successfully ✅', status: :created
     else
       render json: @appointment.errors, status: :unprocessable_entity
     end
@@ -48,6 +48,6 @@ class Api::V1::AppointmentsController < ApplicationController
   # Only allow a list of trusted parameters through.
   def appointment_params
     params.require(:appointment).permit(:patient_id, :doctor_id, :appointment_date, :city,
-                                        :appointment_duration, :facility_fee)
+                                        :appointment_duration)
   end
 end
