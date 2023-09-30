@@ -24,20 +24,14 @@ class Api::V1::AppointmentsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /appointments/1
-  def update
-    if @appointment.update(appointment_params)
-      render json: @appointment
+  # DELETE /appointments/1
+  def destroy
+    if @appointment.destroy
+      render json: 'Appointment deleted successfully ✅ ', status: :created
     else
       render json: @appointment.errors, status: :unprocessable_entity
     end
   end
-
-  # DELETE /appointments/1
-  def destroy
-    @appointment.destroy
-  end
-
   private
 
   # Use callbacks to share common setup or constraints between actions.
