@@ -112,4 +112,10 @@ RSpec.describe Api::V1::AppointmentsController, type: :controller do
     end
   end
 
+  describe "DELETE #destroy" do
+    it "deletes an appointment" do
+      delete :destroy, params: { id: @appointment.id }
+      expect(response).to have_http_status(:success)
+    end
+  end
 end
