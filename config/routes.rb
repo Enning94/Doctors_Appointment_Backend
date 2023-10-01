@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
-  devise_for :patients
+  # devise_for :patients
+  devise_for :patients, controllers: {
+    sessions: 'patients/sessions',
+    registrations: 'patient/registrations'
+  }
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   namespace :api do
