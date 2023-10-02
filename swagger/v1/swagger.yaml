@@ -4,6 +4,80 @@ info:
   title: API V1
   version: v1
 paths:
+  "/api/v1/appointments":
+    post:
+      summary: Creates an appointment
+      tags:
+      - Appointments
+      parameters: []
+      responses:
+        '201':
+          description: appointment created
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                patient_id:
+                  type: integer
+                doctor_id:
+                  type: integer
+                appointment_date:
+                  type: string
+                  format: datetime
+                city:
+                  type: string
+                appointment_duration:
+                  type: integer
+                facility_fee:
+                  type: number
+          application/xml:
+            schema:
+              type: object
+              properties:
+                patient_id:
+                  type: integer
+                doctor_id:
+                  type: integer
+                appointment_date:
+                  type: string
+                  format: datetime
+                city:
+                  type: string
+                appointment_duration:
+                  type: integer
+                facility_fee:
+                  type: number
+    get:
+      summary: Retrieve all appointments
+      tags:
+      - Appointments
+      responses:
+        '201':
+          description: appointment created
+        '200':
+          description: Appointments found
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    patient_id:
+                      type: integer
+                    doctor_id:
+                      type: integer
+                    appointment_date:
+                      type: string
+                      format: datetime
+                    city:
+                      type: string
+                    appointment_duration:
+                      type: integer
+                    facility_fee:
+                      type: number
   "/api/v1/doctors":
     post:
       summary: Creates a doctor
@@ -28,9 +102,7 @@ paths:
                 specialization:
                   type: string
                 consultation_fee:
-                  type: integer
-              required:
-              - name
+                  type: number
           application/xml:
             schema:
               type: object
@@ -44,12 +116,76 @@ paths:
                 specialization:
                   type: string
                 consultation_fee:
-                  type: integer
-              required:
-              - name
- 
+                  type: number
+    get:
+      summary: Retrieves all doctors
+      tags:
+      - Doctors
+      responses:
+        '200':
+          description: Doctors found
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                    profile_pic:
+                      type: string
+                    bio:
+                      type: string
+                    specialization:
+                      type: string
+                    consultation_fee:
+                      type: number
+  "/api/v1/doctors/{id}":
+    get:
+      summary: Retrieves a doctor
+      tags:
+      - Doctors
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Doctor found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  profile_pic:
+                    type: string
+                  bio:
+                    type: string
+                  specialization:
+                    type: string
+                  consultation_fee:
+                    type: number
+            application/xml:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  profile_pic:
+                    type: string
+                  bio:
+                    type: string
+                  specialization:
+                    type: string
+                  consultation_fee:
+                    type: number
 servers:
-- url: http://localhost:3000
+- url:  http://localhost:3000
   variables:
     defaultHost:
-      default: http://localhost:3000
+      default:  http://localhost:3000
