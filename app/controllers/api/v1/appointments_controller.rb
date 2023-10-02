@@ -18,16 +18,7 @@ class Api::V1::AppointmentsController < ApplicationController
     @appointment = Appointment.new(appointment_params)
 
     if @appointment.save
-      render json: @appointment, status: :created, location: @appointment
-    else
-      render json: @appointment.errors, status: :unprocessable_entity
-    end
-  end
-
-  # PATCH/PUT /appointments/1
-  def update
-    if @appointment.update(appointment_params)
-      render json: @appointment
+      render json: 'Appointment created successfully ✅', status: :created
     else
       render json: @appointment.errors, status: :unprocessable_entity
     end
@@ -35,7 +26,11 @@ class Api::V1::AppointmentsController < ApplicationController
 
   # DELETE /appointments/1
   def destroy
-    @appointment.destroy
+    if @appointment.destroy
+      render json: 'Appointment deleted successfully ✅ ', status: :created
+    else
+      render json: @appointment.errors, status: :unprocessable_entity
+    end
   end
 
   private
@@ -48,6 +43,6 @@ class Api::V1::AppointmentsController < ApplicationController
   # Only allow a list of trusted parameters through.
   def appointment_params
     params.require(:appointment).permit(:patient_id, :doctor_id, :appointment_date, :city,
-                                        :appointment_duration, :facility_fee)
+                                        :appointment_duration)
   end
 end
