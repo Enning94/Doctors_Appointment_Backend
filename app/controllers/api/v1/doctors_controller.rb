@@ -17,16 +17,7 @@ class Api::V1::DoctorsController < ApplicationController
     @doctor = Doctor.new(doctor_params)
 
     if @doctor.save
-      render json: @doctor, status: :created, location: @doctor
-    else
-      render json: @doctor.errors, status: :unprocessable_entity
-    end
-  end
-
-  # PATCH/PUT /doctors/1
-  def update
-    if @doctor.update(doctor_params)
-      render json: @doctor
+      render json: 'Doctor successfully created✅', status: :created
     else
       render json: @doctor.errors, status: :unprocessable_entity
     end
@@ -34,7 +25,11 @@ class Api::V1::DoctorsController < ApplicationController
 
   # DELETE /doctors/1
   def destroy
-    @doctor.destroy
+    if @doctor.destroy
+      render json: 'Doctor successfully deleted✅ ', status: :created
+    else
+      render json: @doctor.errors, status: :unprocessable_entity
+    end
   end
 
   private
