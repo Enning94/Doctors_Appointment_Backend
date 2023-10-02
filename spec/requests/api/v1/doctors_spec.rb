@@ -1,24 +1,22 @@
 require 'rails_helper'
 
-RSpec.describe Api::V1::AppointmentsController, type: :controller do
-  before(:each) do
+RSpec.describe Api::V1::DoctorsController, type: :controller do
+
+before(:all) do
     Doctor.delete_all
-    Patient.delete_all
-    Appointment.delete_all
-    @doctor = Doctor.create(name: 'Ankit', profile_pic: 'xyz.ynh', bio: 'I am a doctor',
-                            specialization: 'Neck surgeon', consultation_fee: 150)
-    @patient = Patient.create(username: 'ank1234', name: 'Ank', email: 'ank@gmail.com', password: 'Abc1234')
-    @appointment = Appointment.create(patient_id: @patient.id, doctor_id: @doctor.id, appointment_date: '2023-10-10',
-                                      city: 'Mumbai', appointment_duration: 2)
+    @doctor = Doctor.create(name: 'John Doe', profile_pic: "https://robohash.org/doctor.png?size=300x300&set=set1", 
+        bio: "Quod veritatis vel. Ipsa molestiae harum. Sunt dolorem earum.",
+         specialization: "Sales", consultation_fee: "31.79")
   end
 
-  describe 'GET #index' do
+
+  context 'GET #index' do
     it 'returns http success' do
       get :index
       expect(response).to have_http_status(:success)
     end
 
-    it 'returns an Appointment' do
+    it 'returns a doctor' do
       get :index
       json_response = JSON.parse(response.body)
       expect(json_response).to be_an(Array)
@@ -26,33 +24,40 @@ RSpec.describe Api::V1::AppointmentsController, type: :controller do
     end
   end
 
-  describe 'POST #create' do
+  context 'GET #show' do
+    it 'returns http success' do
+      get :show, params: { id: @doctor.id }
+      expect(response).to have_http_status(:success)
+    end
+  end
+
+  context 'POST #create' do
     let(:valid_params) do
       {
-        appointment: {
-          patient_id: @patient.id,
-          doctor_id: @doctor.id,
-          appointment_date: '2023-10-15',
-          city: 'New York',
-          appointment_duration: 1
+        doctor: {
+            name: "Ollie Torphy123",
+            profile_pic: "https://robohash.org/doctor.png?size=300x300&set=set1",
+            bio: "Quod veritatis vel. Ipsa molestiae harum. Sunt dolorem earum.",
+            specialization: "Sales",
+            consultation_fee: "31.79"
         }
       }
     end
 
-    it 'creates a new appointment' do
+    it 'creates a new doctor' do
       post :create, params: valid_params
       expect(response).to have_http_status(:created)
     end
 
     it 'returns the correct response message' do
       post :create, params: valid_params
-      expect(response.body).to eq('Appointment created successfully ✅')
+      expect(response.body).to eq('Doctor successfully created✅')
     end
   end
 
-  describe 'DELETE #destroy' do
-    it 'deletes an appointment' do
-      delete :destroy, params: { id: @appointment.id }
+  context 'DELETE #destroy' do
+    it 'deletes a doctor' do
+      delete :destroy, params: { id: @doctor.id }
       expect(response).to have_http_status(:success)
     end
   end

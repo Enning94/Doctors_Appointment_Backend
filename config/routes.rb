@@ -13,3 +13,9 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
 end
+
+
+Write unit test for doctor index action 
+Write unit test for doctor show action 
+Write unit test for doctor create action 
+Write unit test for doctor delete action 

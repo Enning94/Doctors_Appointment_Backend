@@ -5,6 +5,7 @@ RSpec.describe Doctor, type: :model do
   doctor = Doctor.new(name: 'John Doe', profile_pic: "https://robohash.org/doctor.png?size=300x300&set=set1", 
     bio: "Quod veritatis vel. Ipsa molestiae harum. Sunt dolorem earum.",
      specialization: "Sales", consultation_fee: "31.79")
+
   before { doctor.save }
 
 
@@ -54,3 +55,6 @@ RSpec.describe Doctor, type: :model do
     expect(doctor).to_not be_valid
   end
 end
+
+
+Write unit test for doctor index action 
