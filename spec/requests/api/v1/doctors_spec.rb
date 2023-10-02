@@ -60,5 +60,3 @@ RSpec.describe Api::V1::DoctorsController, type: :controller do
     end
   end
 end
-
-

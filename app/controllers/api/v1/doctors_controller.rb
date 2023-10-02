@@ -9,7 +9,6 @@ class Api::V1::DoctorsController < ApplicationController
 
   # GET /doctors/1
   def show
-
     render json: @doctor
   end
 
