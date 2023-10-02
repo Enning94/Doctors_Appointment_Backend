@@ -1,0 +1,55 @@
+---
+openapi: 3.0.1
+info:
+  title: API V1
+  version: v1
+paths:
+  "/api/v1/doctors":
+    post:
+      summary: Creates a doctor
+      tags:
+      - Doctors
+      parameters: []
+      responses:
+        '201':
+          description: doctor created
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                profile_pic:
+                  type: string
+                bio:
+                  type: string
+                specialization:
+                  type: string
+                consultation_fee:
+                  type: integer
+              required:
+              - name
+          application/xml:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                profile_pic:
+                  type: string
+                bio:
+                  type: string
+                specialization:
+                  type: string
+                consultation_fee:
+                  type: integer
+              required:
+              - name
+ 
+servers:
+- url: http://localhost:3000
+  variables:
+    defaultHost:
+      default: http://localhost:3000
