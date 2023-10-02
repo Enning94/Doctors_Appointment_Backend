@@ -14,51 +14,76 @@ describe 'Doctors API' do
           profile_pic: { type: :string },
           bio: { type: :string },
           specialization: { type: :string },
-          consultation_fee: { type: :integer },
-          status: { type: :string }
+          consultation_fee: { type: :number }
         },
       }
+      response '201', 'doctor created' do
+        let(:doctor) { {name: 'Ankit', profile_pic: 'xyz.ynh', bio: 'I am a doctor',
+            specialization: 'Neck surgeon', consultation_fee: 150} }
+        run_test!
+      end
+    end
+end
+
+
+  path '/api/v1/doctors/{id}' do
+
+    get 'Retrieves a doctor' do
+      tags 'Doctors'
+      produces 'application/json', 'application/xml'
+      parameter name: :id, :in => :path, :type => :string
+
+      response '200', 'Doctor found' do
+        schema type: :object,
+          properties: {
+            name: { type: :string },
+            profile_pic: { type: :string },
+            bio: { type: :string },
+            specialization: { type: :string },
+            consultation_fee: { type: :number }
+          }
+
+          let(:id) { Doctor.create(name: 'Ankit', profile_pic: 'xyz.ynh', bio: 'I am a doctor',
+            specialization: 'Neck surgeon', consultation_fee: 150).id }
+          run_test!
+        end
+        end
+end
  
+path '/api/v1/doctors' do
+    get 'Retrieves all doctors' do
+      tags 'Doctors'
+      produces 'application/json'
 
-    #   response '201', 'doctor created' do
-    #     let(:doctor) { { name: 'John Doe', profile_pic: 'https://robohash.org/doctor.png?size=300x300&set=set1',
-    #         bio: 'Quod veritatis vel. Ipsa molestiae harum. Sunt dolorem earum.',
-    #         specialization: 'Sales', consultation_fee: '31.79' } }
-    #     run_test!
-    #   end
+      response '200', 'Doctors found' do
+        schema type: :array,
+               items: {
+                 type: :object,
+                 properties: {
+                   name: { type: :string },
+                   profile_pic: { type: :string },
+                   bio: { type: :string },
+                   specialization: { type: :string },
+                   consultation_fee: { type: :number }
+                 }
+               }
+
+               let(:id) { Doctor.create(name: 'Ankit', profile_pic: 'xyz.ynh', bio: 'I am a doctor',
+                specialization: 'Neck surgeon', consultation_fee: 150).id }
+               run_test!
+      end
+    end
+  end
+
+  path '/api/v1/doctors/{id}' do
+    delete 'Deletes a doctor' do
+      tags 'Doctors'
+      produces 'application/json', 'application/xml'
+      parameter name: :id, in: :path, type: :string
+end
+end
+end
 
 
-#       response '422', 'invalid request' do
-#         let(:doctor) { { name: 'foo' } }
-#         run_test!
-#       end
-#     end
-#   end
 
-# #   path '/api/v1/pets/{id}' do
 
-# #     get 'Retrieves a pet' do
-# #       tags 'Pets'
-# #       produces 'application/json', 'application/xml'
-# #       parameter name: :id, :in => :path, :type => :string
-
-# #       response '200', 'name found' do
-# #         schema type: :object,
-# #           properties: {
-# #             id: { type: :integer, },
-# #             name: { type: :string },
-# #             photo_url: { type: :string },
-# #             status: { type: :string }
-# #           },
-# #           required: [ 'id', 'name', 'status' ]
-
-# #         let(:id) { Pet.create(name: 'foo', status: 'bar', photo_url: 'http://example.com/avatar.jpg').id }
-# #         run_test!
-# #       end
-
-# #       response '404', 'pet not found' do
-# #         let(:id) { 'invalid' }
-# #         run_test!
-# #       end
-# #     end
-# #   end

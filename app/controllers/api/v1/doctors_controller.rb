@@ -9,6 +9,7 @@ class Api::V1::DoctorsController < ApplicationController
 
   # GET /doctors/1
   def show
+
     render json: @doctor
   end
 
@@ -26,7 +27,7 @@ class Api::V1::DoctorsController < ApplicationController
   # DELETE /doctors/1
   def destroy
     if @doctor.destroy
-      render json: 'Doctor successfully deleted✅ ', status: :created
+      render json: 'Doctor successfully deleted❌', status: :created
     else
       render json: @doctor.errors, status: :unprocessable_entity
     end
