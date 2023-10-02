@@ -28,7 +28,7 @@ class Api::V1::DoctorsController < ApplicationController
     if @doctor.destroy
       render json: 'Doctor successfully deleted✅ ', status: :created
     else
-      render json: @appointment.errors, status: :unprocessable_entity
+      render json: @doctor.errors, status: :unprocessable_entity
     end
   end
 
