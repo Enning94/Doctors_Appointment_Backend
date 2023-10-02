@@ -17,7 +17,7 @@ class Api::V1::DoctorsController < ApplicationController
     @doctor = Doctor.new(doctor_params)
 
     if @doctor.save
-      render json:"Doctor successfully created✅", status: :created
+      render json: 'Doctor successfully created✅', status: :created
     else
       render json: @doctor.errors, status: :unprocessable_entity
     end
@@ -25,7 +25,7 @@ class Api::V1::DoctorsController < ApplicationController
 
   # DELETE /doctors/1
   def destroy
-   if @doctor.destroy
+    if @doctor.destroy
       render json: 'Doctor successfully deleted✅ ', status: :created
     else
       render json: @appointment.errors, status: :unprocessable_entity

@@ -1,14 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe Api::V1::DoctorsController, type: :controller do
-
-before(:all) do
+  before(:all) do
     Doctor.delete_all
-    @doctor = Doctor.create(name: 'John Doe', profile_pic: "https://robohash.org/doctor.png?size=300x300&set=set1", 
-        bio: "Quod veritatis vel. Ipsa molestiae harum. Sunt dolorem earum.",
-         specialization: "Sales", consultation_fee: "31.79")
+    @doctor = Doctor.create(name: 'John Doe', profile_pic: 'https://robohash.org/doctor.png?size=300x300&set=set1',
+                            bio: 'Quod veritatis vel. Ipsa molestiae harum. Sunt dolorem earum.',
+                            specialization: 'Sales', consultation_fee: '31.79')
   end
-
 
   context 'GET #index' do
     it 'returns http success' do
@@ -35,11 +33,11 @@ before(:all) do
     let(:valid_params) do
       {
         doctor: {
-            name: "Ollie Torphy123",
-            profile_pic: "https://robohash.org/doctor.png?size=300x300&set=set1",
-            bio: "Quod veritatis vel. Ipsa molestiae harum. Sunt dolorem earum.",
-            specialization: "Sales",
-            consultation_fee: "31.79"
+          name: 'Ollie Torphy123',
+          profile_pic: 'https://robohash.org/doctor.png?size=300x300&set=set1',
+          bio: 'Quod veritatis vel. Ipsa molestiae harum. Sunt dolorem earum.',
+          specialization: 'Sales',
+          consultation_fee: '31.79'
         }
       }
     end

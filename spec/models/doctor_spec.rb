@@ -2,13 +2,11 @@
 require 'rails_helper'
 
 RSpec.describe Doctor, type: :model do
-  doctor = Doctor.new(name: 'John Doe', profile_pic: "https://robohash.org/doctor.png?size=300x300&set=set1", 
-    bio: "Quod veritatis vel. Ipsa molestiae harum. Sunt dolorem earum.",
-     specialization: "Sales", consultation_fee: "31.79")
+  doctor = Doctor.new(name: 'John Doe', profile_pic: 'https://robohash.org/doctor.png?size=300x300&set=set1',
+                      bio: 'Quod veritatis vel. Ipsa molestiae harum. Sunt dolorem earum.',
+                      specialization: 'Sales', consultation_fee: '31.79')
 
   before { doctor.save }
-
-
 
   it 'is valid with valid attributes' do
     expect(doctor).to be_valid
@@ -39,7 +37,6 @@ RSpec.describe Doctor, type: :model do
     expect(doctor).to_not be_valid
   end
 
-
   it 'is not valid without a specialization' do
     doctor.specialization = nil
     expect(doctor).to_not be_valid
@@ -55,6 +52,3 @@ RSpec.describe Doctor, type: :model do
     expect(doctor).to_not be_valid
   end
 end
-
-
-Write unit test for doctor index action 
