@@ -7,9 +7,7 @@ RSpec.describe Doctor, type: :model do
      specialization: "Sales", consultation_fee: "31.79")
   before { doctor.save }
 
-#   recipe = Recipe.new(user:, name: 'Recipe 1', description: 'Recipe 1 description', cooking_time: 1,
-#                       preparation_time: 1, public: true)
-#   before { recipe.save }
+
 
   it 'is valid with valid attributes' do
     expect(doctor).to be_valid
@@ -19,11 +17,6 @@ RSpec.describe Doctor, type: :model do
     doctor.name = nil
     expect(doctor).to_not be_valid
   end
-
-#   it 'is not valid with a name less than 3 characters' do
-#     doctor.name = 'ab'
-#     expect(doctor).to_not be_valid
-#   end
 
   it 'is not valid with a name more than 200 characters' do
     doctor.name = 'a' * 201
