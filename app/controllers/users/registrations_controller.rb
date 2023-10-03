@@ -8,8 +8,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def respond_with(resource, _opts = {})
     if resource.persisted?
+      token = issue_token(resource)
       render json: {
         status: { code: 200, message: 'Signed up successfully.' },
+        jwt: token,
         data: UserSerializer.new(resource).serializable_hash[:data][:attributes]
       }
     else

@@ -10,11 +10,12 @@ class Users::SessionsController < Devise::SessionsController
     if resource&.valid_password?(sign_in_params[:password])
       sign_in(resource_name, resource)
       yield resource if block_given?
-
+      token = issue_token(user)
       render json: {
         status: {
           code: 200,
           message: 'Logged in successfully.',
+          jwt: token,
           data: { user: UserSerializer.new(resource).serializable_hash[:data][:attributes] }
         }
       }, status: :ok
