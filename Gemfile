@@ -37,7 +37,7 @@ gem 'faker', '~> 3.2'
 # gem "image_processing", "~> 1.2"
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
-gem "rack-cors"
+gem 'rack-cors'
 
 gem 'devise'
 gem 'devise-jwt'
