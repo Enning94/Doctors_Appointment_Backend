@@ -54,8 +54,6 @@ paths:
       tags:
       - Appointments
       responses:
-        '201':
-          description: appointment created
         '200':
           description: Appointments found
           content:
@@ -184,8 +182,21 @@ paths:
                     type: string
                   consultation_fee:
                     type: number
+    delete:
+      summary: Deletes a doctor
+      tags:
+      - Doctors
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Doctor deleted❌
 servers:
-- url:  http://localhost:3000
+- url: http://localhost:3000
   variables:
     defaultHost:
-      default:  http://localhost:3000
+      default: http://localhost:3000

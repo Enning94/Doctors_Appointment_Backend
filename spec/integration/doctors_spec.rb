@@ -82,6 +82,10 @@ describe 'Doctors API' do
       tags 'Doctors'
       produces 'application/json', 'application/xml'
       parameter name: :id, in: :path, type: :string
+
+      response '204', 'Doctor deleted' do
+        run_test!
+      end
     end
   end
 end
