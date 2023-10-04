@@ -39,6 +39,7 @@
 
 ## 🚀 Kanban Board <a name="kanban-board"></a>
 - [Kanban Board ](https://github.com/Enning94/Doctors_Appointment_Backend/projects/1)
+- Kanban Board Initial Screenshot
 ![Kanban Board Initial Screenshot](<Screenshot 2023-10-01 at 10.10.19.png>)
  
 - We are grup of 5 people working on this project. We are using the Kanban board to keep track of our progress. We are using the following columns:
