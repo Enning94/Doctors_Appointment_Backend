@@ -11,29 +11,29 @@ def issue_token(user)
 end
 
 
-def decoded_token
-  begin
-      JWT.decode(token, jwt_key, true, { :algorithm => 'HS256' })
-  rescue => exception
-      [{error: "Invalid Token"}]
-  end    
-end
+# def decoded_token
+#   begin
+#       JWT.decode(token, jwt_key, true, { :algorithm => 'HS256' })
+#   rescue => exception
+#       [{error: "Invalid Token"}]
+#   end    
+# end
 
-def token
-  request.headers["Authorization"]
-end
+# def token
+#   request.headers["Authorization"]
+# end
 
-def user_id
-  decoded_token.first["user_id"]
-end
+# def user_id
+#   decoded_token.first["user_id"]
+# end
 
-def current_user
-  user ||= User.find_by(id: user_id)
-end
+# def current_user
+#   user ||= User.find_by(id: user_id)
+# end
 
-def logged_in?
-  !!current_user
-end
+# def logged_in?
+  # !!current_user
+# end
 
   protected
 

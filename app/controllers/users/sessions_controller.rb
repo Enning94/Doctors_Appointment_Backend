@@ -10,7 +10,7 @@ class Users::SessionsController < Devise::SessionsController
     if resource&.valid_password?(sign_in_params[:password])
       sign_in(resource_name, resource)
       yield resource if block_given?
-      token = issue_token(user)
+      token = issue_token(resource)
       render json: {
         status: {
           code: 200,
