@@ -4,8 +4,7 @@ class Api::V1::AppointmentsController < ApplicationController
 
   # GET /appointments
   def index
-    @appointments = Appointment.all
-
+    @appointments = Appointment.where(user_id: current_user.id)
     render json: @appointments
   end
 
@@ -43,7 +42,11 @@ class Api::V1::AppointmentsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def appointment_params
-    params.require(:appointment).permit(:user_id, :doctor_id, :appointment_date, :city,
-                                        :appointment_duration)
+    permitted_params = params.require(:appointment).permit(:doctor_id, :appointment_date, :city, :appointment_duration)
+
+    # Set the user_id to the current user's id
+    permitted_params[:user_id] = current_user.id
+  
+    permitted_params
   end
 end
