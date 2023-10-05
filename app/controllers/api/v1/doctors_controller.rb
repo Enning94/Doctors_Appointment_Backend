@@ -1,10 +1,11 @@
 class Api::V1::DoctorsController < ApplicationController
+  before_action :authenticate_user
   before_action :set_doctor, only: %i[show update destroy]
 
   # GET /doctors
   def index
     @doctors = Doctor.all
-    render json: @doctors
+    render json: { doc: @doctors, user: current_user }
   end
 
   # GET /doctors/1

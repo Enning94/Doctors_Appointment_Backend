@@ -1,4 +1,5 @@
 class Api::V1::AppointmentsController < ApplicationController
+  before_action :authenticate_user
   before_action :set_appointment, only: %i[show update destroy]
 
   # GET /appointments
