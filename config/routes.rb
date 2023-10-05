@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-  get '/current_user', to: 'current_user#index'
-  # devise_for :users
+    # devise_for :users
   devise_for :users, path: '', path_names: {
     sign_in: 'login',
     sign_out: 'logout',
@@ -17,7 +16,7 @@ Rails.application.routes.draw do
       # root "doctors#index"
       resources :appointments
       resources :doctors
-      resources :patients
+      resources :current_user
     end
   end
 

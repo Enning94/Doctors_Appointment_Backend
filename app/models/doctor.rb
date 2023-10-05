@@ -1,6 +1,6 @@
 class Doctor < ApplicationRecord
   has_many :appointments, dependent: :destroy
-  has_many :patients, through: :appointments
+  has_many :users, through: :appointments
 
   validates :name, presence: true, length: { maximum: 200 }
   validates :profile_pic, presence: true

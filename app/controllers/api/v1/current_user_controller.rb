@@ -1,6 +1,6 @@
-class CurrentUserController < ApplicationController
-  #  include RackSessionsFix
-  #  before_action :authenticate_user!
+class Api::V1::CurrentUserController < ApplicationController
+   include RackSessionsFix
+   before_action :authenticate_user
 
   def index
     if current_user.present?
