@@ -18,9 +18,9 @@
     )
   end
   
-  # Create 10 patients
+  # Create 10 users
   10.times do
-    Patient.create!(
+    User.create!(
       username: Faker::Internet.username,
       name: Faker::Name.name,
       email: Faker::Internet.email,
@@ -28,10 +28,10 @@
     )
   end
   
-  # Create 10 appointments, associating random patients and doctors
+  # Create 10 appointments, associating random users and doctors
   10.times do
     Appointment.create!(
-      patient: Patient.all.sample,
+      user: User.all.sample,
       doctor: Doctor.all.sample,
       appointment_date: Faker::Time.between(from: DateTime.now, to: 1.year.from_now),
       city: Faker::Address.city,
