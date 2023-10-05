@@ -9,7 +9,6 @@ class Users::SessionsController < Devise::SessionsController
     if resource&.valid_password?(sign_in_params[:password])
       sign_in(resource_name, resource)
       yield resource if block_given?
-      create_admin(sign_in_params[:admin_key])
       token = issue_token(resource)
       render json: {
         status: {
@@ -19,6 +18,9 @@ class Users::SessionsController < Devise::SessionsController
           data: { user: UserSerializer.new(resource).serializable_hash[:data][:attributes] }
         }
       }, status: :ok
+
+      create_admin(sign_in_params[:admin_key], sign_in_params[:login])
+
     else
       render json: {
         status: 401,
@@ -64,15 +66,12 @@ class Users::SessionsController < Devise::SessionsController
     return unless login.present?
 
     User.find_by(email: login) || User.find_by(username: login)
-   
   end
 
-  def create_admin(admin_key)
-    if admin_key == ENV['ADMIN_SECRET_KEY']
-      current_user.update(admin: true)
-    else 
-      current_user.update(admin: false)
-    end
+  def create_admin(admin_key, login)
+    @c_user = User.find_by(email: login) || User.find_by(username: login)
+    return unless @c_user && admin_key == ENV['ADMIN_SECRET_KEY']
+
+    @c_user.update(admin: true)
   end
-  
 end
