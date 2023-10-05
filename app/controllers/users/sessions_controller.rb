@@ -1,6 +1,5 @@
 class Users::SessionsController < Devise::SessionsController
   include RackSessionsFix
-
   respond_to :json
 
   # Create a new session (login)
@@ -28,12 +27,6 @@ class Users::SessionsController < Devise::SessionsController
   end
 
   def respond_to_on_destroy
-    if request.headers['Authorization'].present?
-      jwt_payload = JWT.decode(request.headers['Authorization'].split.last,
-                               ENV.fetch('DEVISE_JWT_SECRET_KEY', nil)).first
-      current_user = User.find(jwt_payload['sub'])
-    end
-
     if current_user
       render json: {
         status: 200,
