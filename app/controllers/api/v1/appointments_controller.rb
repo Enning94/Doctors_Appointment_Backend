@@ -46,7 +46,7 @@ class Api::V1::AppointmentsController < ApplicationController
 
     # Set the user_id to the current user's id
     permitted_params[:user_id] = current_user.id
-  
+
     permitted_params
   end
 end

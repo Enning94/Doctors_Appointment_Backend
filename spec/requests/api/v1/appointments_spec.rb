@@ -3,11 +3,11 @@ require 'rails_helper'
 RSpec.describe Api::V1::AppointmentsController, type: :controller do
   before(:each) do
     Doctor.delete_all
-    User.delete_all 
+    User.delete_all
     Appointment.delete_all
     @doctor = Doctor.create(name: 'Ankit', profile_pic: 'xyz.ynh', bio: 'I am a doctor',
                             specialization: 'Neck surgeon', consultation_fee: 150)
-    @user = User.create(username: 'ank1234', name: 'Ank', email: 'ank@gmail.com', password: 'Abc1234') 
+    @user = User.create(username: 'ank1234', name: 'Ank', email: 'ank@gmail.com', password: 'Abc1234')
     @appointment = Appointment.create(user_id: @user.id, doctor_id: @doctor.id, appointment_date: '2023-10-10',
                                       city: 'Mumbai', appointment_duration: 2)
   end
