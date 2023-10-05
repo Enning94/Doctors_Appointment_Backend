@@ -26,6 +26,7 @@ class Api::V1::AppointmentsController < ApplicationController
 
   # DELETE /appointments/1
   def destroy
+    authorize! :destroy, @Appointment
     if @appointment.destroy
       render json: 'Appointment deleted successfully ✅ ', status: :created
     else
