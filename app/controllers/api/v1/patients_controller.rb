@@ -1,4 +1,5 @@
 class Api::V1::PatientsController < ApplicationController
+  before_action :authenticate_user
   before_action :set_patient, only: %i[show update destroy]
 
   # GET /patients

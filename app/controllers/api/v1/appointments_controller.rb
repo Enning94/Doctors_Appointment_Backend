@@ -1,10 +1,10 @@
 class Api::V1::AppointmentsController < ApplicationController
+  # before_action :authenticate_user
   before_action :set_appointment, only: %i[show update destroy]
 
   # GET /appointments
   def index
-    @appointments = Appointment.all
-
+    @appointments = Appointment.where(user_id: current_user.id)
     render json: @appointments
   end
 
@@ -26,6 +26,7 @@ class Api::V1::AppointmentsController < ApplicationController
 
   # DELETE /appointments/1
   def destroy
+    authorize! :destroy, @Appointment
     if @appointment.destroy
       render json: 'Appointment deleted successfully ✅ ', status: :created
     else
@@ -42,7 +43,11 @@ class Api::V1::AppointmentsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def appointment_params
-    params.require(:appointment).permit(:patient_id, :doctor_id, :appointment_date, :city,
-                                        :appointment_duration)
+    permitted_params = params.require(:appointment).permit(:doctor_id, :appointment_date, :city, :appointment_duration)
+
+    # Set the user_id to the current user's id
+    permitted_params[:user_id] = current_user.id
+
+    permitted_params
   end
 end
