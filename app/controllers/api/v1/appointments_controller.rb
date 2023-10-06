@@ -1,5 +1,5 @@
 class Api::V1::AppointmentsController < ApplicationController
-  before_action :authenticate_user
+  # before_action :authenticate_user
   before_action :set_appointment, only: %i[show update destroy]
 
   # GET /appointments
@@ -26,6 +26,7 @@ class Api::V1::AppointmentsController < ApplicationController
 
   # DELETE /appointments/1
   def destroy
+    authorize! :destroy, @Appointment
     if @appointment.destroy
       render json: 'Appointment deleted successfully ✅ ', status: :created
     else

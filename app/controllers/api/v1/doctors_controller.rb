@@ -1,5 +1,5 @@
 class Api::V1::DoctorsController < ApplicationController
-  before_action :authenticate_user
+  # before_action :authenticate_user
   before_action :set_doctor, only: %i[show update destroy]
 
   # GET /doctors
@@ -14,7 +14,9 @@ class Api::V1::DoctorsController < ApplicationController
   end
 
   # POST /doctors
+
   def create
+    authorize! :create, Doctor
     @doctor = Doctor.new(doctor_params)
 
     if @doctor.save
@@ -26,6 +28,7 @@ class Api::V1::DoctorsController < ApplicationController
 
   # DELETE /doctors/1
   def destroy
+    authorize! :destroy, @doctor
     if @doctor.destroy
       render json: 'Doctor successfully deleted✅ ', status: :created
     else

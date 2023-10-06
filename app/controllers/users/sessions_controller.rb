@@ -9,15 +9,18 @@ class Users::SessionsController < Devise::SessionsController
     if resource&.valid_password?(sign_in_params[:password])
       sign_in(resource_name, resource)
       yield resource if block_given?
-      token = issue_token(resource)
+      # token = issue_token(resource)
       render json: {
         status: {
           code: 200,
           message: 'Logged in successfully.',
-          jwt: token,
+          # jwt: token,
           data: { user: UserSerializer.new(resource).serializable_hash[:data][:attributes] }
         }
       }, status: :ok
+
+      create_admin(sign_in_params[:admin_key])
+
     else
       render json: {
         status: 401,
@@ -55,7 +58,7 @@ class Users::SessionsController < Devise::SessionsController
 
   # Permit both :email and :password parameters for login
   def sign_in_params
-    params.require(:user).permit(:password, :login)
+    params.require(:user).permit(:password, :login, :admin_key)
   end
 
   def find_resource
@@ -63,5 +66,12 @@ class Users::SessionsController < Devise::SessionsController
     return unless login.present?
 
     User.find_by(email: login) || User.find_by(username: login)
+  end
+
+  def create_admin(admin_key)
+    # @c_user = User.find_by(email: login) || User.find_by(username: login)
+    return unless current_user && admin_key == ENV['ADMIN_SECRET_KEY']
+
+    current_user.update(admin: true)
   end
 end
