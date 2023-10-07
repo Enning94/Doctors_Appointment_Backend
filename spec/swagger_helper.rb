@@ -27,6 +27,9 @@ RSpec.configure do |config|
               default: 'http://localhost:3000'
             }
           }
+        },
+        {
+          url: 'https://doctors-appointment-0mkx.onrender.com'
         }
       ]
     }
