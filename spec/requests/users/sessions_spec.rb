@@ -6,13 +6,13 @@ RSpec.describe Users::SessionsController, type: :controller do
   end
 
   before do
-    @request.env["devise.mapping"] = Devise.mappings[:user]
+    @request.env['devise.mapping'] = Devise.mappings[:user]
   end
 
   describe 'POST #create' do
     context 'with valid login credentials' do
       it 'logs in successfully' do
-        user = User.create(name: 'test', username: 'testuser', email: 'test@example.com', password: 'password')
+        User.create(name: 'test', username: 'testuser', email: 'test@example.com', password: 'password')
 
         post :create, params: {
           user: {
@@ -48,7 +48,6 @@ RSpec.describe Users::SessionsController, type: :controller do
 
         expect(json_response['message']).to eq('Invalid email/username or password.')
         expect(json_response['status']).to eq(401)
-      
       end
     end
   end

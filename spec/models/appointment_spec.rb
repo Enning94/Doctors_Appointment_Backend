@@ -1,12 +1,14 @@
 require 'rails_helper'
 
 RSpec.describe Appointment, type: :model do
-  let(:user) { User.create(name: 'John Doe', username: 'johndoe', email: 'johndoe@example.com', password: 'password123') }
+  let(:user) do
+    User.create(name: 'John Doe', username: 'johndoe', email: 'johndoe@example.com', password: 'password123')
+  end
   let(:doctor) { Doctor.create(name: 'Dr. Smith', profile_pic: 'https://example.com/doctor.png', bio: 'Experienced doctor', specialization: 'Cardiology', consultation_fee: 50.0) }
   let(:appointment) do
     Appointment.new(
-      user: user,
-      doctor: doctor,
+      user:,
+      doctor:,
       appointment_date: DateTime.now,
       city: 'New York',
       appointment_duration: 60

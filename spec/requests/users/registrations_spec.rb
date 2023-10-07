@@ -2,13 +2,13 @@ require 'rails_helper'
 
 RSpec.describe Users::RegistrationsController, type: :controller do
   before do
-    @request.env["devise.mapping"] = Devise.mappings[:user]
+    @request.env['devise.mapping'] = Devise.mappings[:user]
   end
 
   describe 'POST #create' do
     context 'with valid params' do
       it 'creates a new user' do
-        expect {
+        expect do
           post :create, params: {
             user: {
               email: 'test@example.com',
@@ -18,10 +18,10 @@ RSpec.describe Users::RegistrationsController, type: :controller do
               username: 'testuser'
             }
           }, format: :json
-        }.to change(User, :count).by(1)
+        end.to change(User, :count).by(1)
 
         expect(response).to have_http_status(:success)
-        
+
         # Check for the presence of keys and values in the JSON response
         json_response = JSON.parse(response.body)
         expect(json_response['status']['message']).to eq('Signed up successfully.')
