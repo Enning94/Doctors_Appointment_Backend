@@ -50,7 +50,8 @@ RSpec.describe Api::V1::AppointmentsController, type: :controller do
 
     it 'returns the correct response message' do
       post :create, params: valid_params
-      expect(response.body).to eq('Appointment created successfully ✅')
+      response_data = JSON.parse(response.body)
+      expect(response_data['message']).to eq('Appointment created successfully ✅')
     end
   end
 
