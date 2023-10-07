@@ -15,17 +15,42 @@ RSpec.configure do |config|
   config.swagger_docs = {
     'v1/swagger.yaml' => {
       openapi: '3.0.1',
+      components: {
+        securitySchemes: {
+          bearer_auth: {
+            type: :http,
+            scheme: :bearer
+          }
+        }
+       } ,
       info: {
-        title: 'API V1',
-        version: 'v1'
+        title: 'Welcome to the Doctors Appointment API Documentation',
+        version: 'v1',
+        description: 
+        "Our API is organized with [REST](https://en.wikipedia.org/wiki/REST). Our API has predictable resource-oriented URLs, accepts form-encoded request bodies, returns JSON-encoded responses, and uses standard HTTP response codes, authentication, and verbs. 
+        It's a simple API that is linked to the [Doctors-Appointment-FrontEnd](https://github.com/adarachel/doctors-appointment-frontend). 
+        It holds all the data for the frontend to display, as well as the information of the users (Usernames, Emails & Passwords).
+    
+        ### Here's how to access protected endpoints:
+    
+          1. Log in using your credentials.
+    
+          2. In the response headers, find the 'Authorization' field.
+    
+          3. Copy the JWT Token from the 'Authorization' field.
+    
+          4. In your subsequent requests to protected endpoints, include the copied token in the 'Authorization' header as 'Bearer YOUR_TOKEN_HERE.'"
+      
+        
       },
+
       paths: {},
       servers: [
         {
-          url: 'https://{defaultHost}',
+          url: 'http://localhost:3000',
           variables: {
             defaultHost: {
-              default: 'www.example.com'
+              default: 'http://localhost:3000'
             }
           }
         }
