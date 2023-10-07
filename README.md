@@ -21,6 +21,7 @@
     - [Setup](#setup)
     - [Install](#install)
     - [Usage](#usage)
+    - [Tests 🧪](#tests-)
   - [👥 Authors ](#-authors-)
    - [👤 **Ankit [member 1]**](#👤-Ankit)
    - [👤 **Ada Rachel [member 2]**](#👤-Ada-Rachel)
@@ -58,7 +59,7 @@
 
 ### Tech Stack <a name="tech-stack"></a>
   <ul>
-    <li>Ruby</li>
+    <li><a href="https://www.ruby-lang.org/en/">Ruby</a></li>
     <li><a href="https://rubyonrails.org">Ruby On Rails</a></li>
     <li><a href="https://www.postgresql.org/">PostgreSQL</a></li>
   </ul>
@@ -122,8 +123,16 @@ Example command:
 ```sh
   rails server
 ```
+### Tests 🧪
 
+To test the project, execute the following command:
 
+Example command:
+
+```sh
+  RAILS_ENV=test bundle exec rspec
+  rspec spec
+```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
