@@ -22,6 +22,11 @@
     - [Install](#install)
     - [Usage](#usage)
   - [👥 Authors ](#-authors-)
+   - [👤 **Ankit [member 1]**](#👤-Ankit)
+   - [👤 **Ada Rachel [member 2]**](#👤-Ada-Rachel)
+   - [👤 **Deborah A. Fashoro [member 3]**](#👤-Deborah-A.-Fashoro)
+   - [👤 **Festus Enning [member 4]**](#👤-Festus-Enning)
+   - [👤 **Vahe Stepanyan [member 5]**](#👤-Vahe-Stepanyan)
   - [🔭 Future Features ](#-future-features-)
   - [🤝 Contributing ](#-contributing-)
   - [⭐️ Show your support ](#️-show-your-support-)
@@ -144,7 +149,9 @@ Example command:
 
 👤 **Festus Enning [member 4]**
 
-- GitHub: [@githubhandle](https://github.com/Enning94)
+- GitHub: [@Enning94](https://github.com/Enning94)
+- Twitter: [@nana_akyerefi](https://twitter.com/nana_akyerefi)
+- LinkedIn: [Enning Festus](https://www.linkedin.com/in/enningfestus/)
 
 👤 **Vahe Stepanyan [member 5]**
 
