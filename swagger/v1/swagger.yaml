@@ -8,14 +8,23 @@ components:
 info:
   title: Welcome to the Doctors Appointment API Documentation
   version: v1
+  description: "Our API is organized with [REST](https://en.wikipedia.org/wiki/REST).
+    Our API has predictable resource-oriented URLs, accepts form-encoded request bodies,
+    returns JSON-encoded responses, and uses standard HTTP response codes, authentication,
+    and verbs. \n        It's a simple API that is linked to the [Doctors-Appointment-FrontEnd](https://github.com/adarachel/doctors-appointment-frontend).
+    \n        It holds all the data for the frontend to display, as well as the information
+    of the users (Usernames, Emails & Passwords).\n    \n        ### Here's how to
+    access protected endpoints:\n    \n          1. Log in using your credentials.\n
+    \   \n          2. In the response headers, find the 'Authorization' field.\n
+    \   \n          3. Copy the JWT Token from the 'Authorization' field.\n    \n
+    \         4. In your subsequent requests to protected endpoints, include the copied
+    token in the 'Authorization' header as 'Bearer YOUR_TOKEN_HERE.'"
 paths:
   "/signup":
     post:
       summary: Create new User
-      description: |2-
-
-
-              - This Endpoint uses a POST request to create a new user.
+      description: "\n      \n      - This Endpoint uses a POST request to create
+        a new user."
       tags:
       - Authenticate User
       parameters: []
@@ -58,13 +67,11 @@ paths:
   "/login":
     post:
       summary: Logs in a User/Admin
-      description: |2-
-
-            - This endpoint allows you to log in as a user or admin. Upon successful login, a JWT Token is generated and included in the response headers under the 'Authorization' field.
-
-                - To log in as an admin, include the key 'SvsBuCwnpTaGhohnELHmNmBGp7MwSj' in the 'admin_key' input filed.
-
-                - To log in as a normal user, you can omit the 'admin_key.'
+      description: " \n    - This endpoint allows you to log in as a user or admin.
+        Upon successful login, a JWT Token is generated and included in the response
+        headers under the 'Authorization' field.\n\n        - To log in as an admin,
+        include the 'admin_key' in your login parameters.\n       \n        - To log
+        in as a normal user, you can omit the 'admin_key.'"
       tags:
       - Authenticate User
       parameters: []
@@ -103,10 +110,8 @@ paths:
   "/api/v1/appointments":
     post:
       summary: Creates an appointment
-      description: |2-
-
-
-                - This Endpoint uses a POST request to create an A API EndPointsppointment for a signed in user.
+      description: "\n        \n        - This Endpoint uses a POST request to create
+        an A API EndPointsppointment for a signed in user."
       tags:
       - Appointments API EndPoints
       security:
@@ -175,10 +180,8 @@ paths:
                   example: 100
     get:
       summary: Retrieve all appointments
-      description: |2-
-
-
-                - This Endpoint uses a GET request to Retrieve all Appointments.
+      description: "\n        \n        - This Endpoint uses a GET request to Retrieve
+        all Appointments."
       tags:
       - Appointments API EndPoints
       security:
@@ -226,12 +229,9 @@ paths:
   "/api/v1/doctors":
     post:
       summary: Creates a doctor
-      description: |2-
-
-
-                - This Endpoint uses a POST request to create a Doctor.
-
-                - Only Users signed in as Admin are authorized to access this Endpoint
+      description: "\n\n        - This Endpoint uses a POST request to create a Doctor.\n
+        \   \n        - Only Users signed in as Admin are authorized to access this
+        Endpoint"
       tags:
       - Doctors API EndPoints
       security:
@@ -297,10 +297,8 @@ paths:
                   example: 200
     get:
       summary: Retrieves all doctors
-      description: |2-
-
-
-                - This Endpoint uses GET request to retrieve all Doctors
+      description: "\n        \n        - This Endpoint uses GET request to retrieve
+        all Doctors"
       tags:
       - Doctors API EndPoints
       security:
@@ -344,10 +342,8 @@ paths:
   "/api/v1/doctors/{id}":
     get:
       summary: Retrieves a doctor
-      description: |2-
-
-
-                - This Endpoint uses GET request to retrieve a specific Doctor detail
+      description: "\n        \n        - This Endpoint uses GET request to retrieve
+        a specific Doctor detail"
       tags:
       - Doctors API EndPoints
       security:
@@ -424,12 +420,9 @@ paths:
                     example: '2023-10-07T06:43:34.490Z'
     delete:
       summary: Deletes a doctor
-      description: |2-
-
-
-                - This Endpoint uses a DELETE request to delete/remove a Doctor.
-
-                - Only Users signed in as Admin are authorized to access this Endpoint
+      description: "\n\n        - This Endpoint uses a DELETE request to delete/remove
+        a Doctor.\n    \n        - Only Users signed in as Admin are authorized to
+        access this Endpoint"
       tags:
       - Doctors API EndPoints
       security:
