@@ -20,7 +20,7 @@ class Api::V1::DoctorsController < ApplicationController
     @doctor = Doctor.new(doctor_params)
 
     if @doctor.save
-      render json: 'Doctor successfully created✅', status: :created
+      render json: { message: 'Doctor successfully created✅', doctor: @doctor }, status: :created
     else
       render json: @doctor.errors, status: :unprocessable_entity
     end

@@ -18,8 +18,7 @@ class Api::V1::AppointmentsController < ApplicationController
     @appointment = Appointment.new(appointment_params)
 
     if @appointment.save
-      render json: 'Appointment created successfully ✅', status: :created
-    else
+      render json: { message: 'Appointment created successfully ✅', appointment: @appointment }, status: :created    else
       render json: @appointment.errors, status: :unprocessable_entity
     end
   end
