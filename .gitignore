@@ -31,3 +31,6 @@
 
 /node_module
 /node_modules
+
+#Ignore spec/integration files for documentation:"rake rswag:specs:swaggerize" 
+spec/integration

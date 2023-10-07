@@ -66,6 +66,8 @@ GEM
       i18n (>= 1.6, < 2)
       minitest (>= 5.1)
       tzinfo (~> 2.0)
+    addressable (2.8.5)
+      public_suffix (>= 2.0.2, < 6.0)
     bcrypt (3.1.19)
     bootsnap (1.16.0)
       msgpack (~> 1.2)
@@ -111,6 +113,8 @@ GEM
     irb (1.8.1)
       rdoc
       reline (>= 0.3.8)
+    json-schema (3.0.0)
+      addressable (>= 2.8)
     jsonapi-serializer (2.2.0)
       activesupport (>= 4.2)
     jwt (2.7.1)
@@ -260,9 +264,7 @@ DEPENDENCIES
   rails (~> 7.0.8)
   rspec-rails (~> 6.0.0)
   rswag
-  rswag-api
   rswag-specs
-  rswag-ui
   tzinfo-data
 
 RUBY VERSION
