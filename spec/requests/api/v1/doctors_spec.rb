@@ -3,11 +3,16 @@ require 'rails_helper'
 RSpec.describe Api::V1::DoctorsController, type: :controller do
   before(:all) do
     Doctor.delete_all
+    User.delete_all
+    @user = User.create(username: 'ank1234', name: 'Ank', email: 'ank@gmail.com', password: 'Abc1234', admin: true)
+
     @doctor = Doctor.create(name: 'John Doe', profile_pic: 'https://robohash.org/doctor.png?size=300x300&set=set1',
                             bio: 'Quod veritatis vel. Ipsa molestiae harum. Sunt dolorem earum.',
                             specialization: 'Sales', consultation_fee: '31.79')
   end
-
+  before do
+    sign_in @user
+  end
   context 'GET #index' do
     it 'returns http success' do
       get :index
