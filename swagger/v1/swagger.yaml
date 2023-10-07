@@ -70,8 +70,8 @@ paths:
       description: " \n    - This endpoint allows you to log in as a user or admin.
         Upon successful login, a JWT Token is generated and included in the response
         headers under the 'Authorization' field.\n\n        - To log in as an admin,
-        include the key 'SvsBuCwnpTaGhohnELHmNmBGp7MwSj' in the 'admin_key' input
-        filed.\n       \n        - To log in as a normal user, you can omit the 'admin_key.'"
+        include the 'admin_key' in your login parameters.\n       \n        - To log
+        in as a normal user, you can omit the 'admin_key.'"
       tags:
       - Authenticate User
       parameters: []
