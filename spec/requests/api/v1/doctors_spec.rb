@@ -54,7 +54,8 @@ RSpec.describe Api::V1::DoctorsController, type: :controller do
 
     it 'returns the correct response message' do
       post :create, params: valid_params
-      expect(response.body).to eq('Doctor successfully created✅')
+      response_data = JSON.parse(response.body)
+      expect(response_data['message']).to eq('Doctor successfully created✅')
     end
   end
 
