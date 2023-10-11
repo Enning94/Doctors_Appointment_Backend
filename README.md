@@ -36,7 +36,7 @@
 **[Doctors Appoinment Backend]** is a the backend part of a web application project that allows users to book appointments with doctors.
 
 ## Frontend App <a name="front-end"></a>
-- [Click here to navigate to the Backend](https://github.com/adarachel/doctors-appointment-frontend)
+- [Click here to navigate to the Frontend](https://github.com/adarachel/doctors-appointment-frontend)
 
 ## 🚀 Kanban Board <a name="kanban-board"></a>
 - [Kanban Board ](https://github.com/Enning94/Doctors_Appointment_Backend/projects/1)
