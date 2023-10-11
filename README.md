@@ -114,7 +114,15 @@ Install this project with:
 
 To run the project, execute the following command:
 
-Example command:
+setup database:
+```
+rails db:create
+rails db:migrate
+rails db:seed
+
+```
+
+start server command:
 
 ```sh
   rails server
