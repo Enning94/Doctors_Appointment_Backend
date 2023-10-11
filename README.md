@@ -23,11 +23,6 @@
     - [Usage](#usage)
     - [Tests 🧪](#tests-)
   - [👥 Authors ](#-authors-)
-   - [👤 **Ankit [member 1]**](#👤-Ankit)
-   - [👤 **Ada Rachel [member 2]**](#👤-Ada-Rachel)
-   - [👤 **Deborah A. Fashoro [member 3]**](#👤-Deborah-A.-Fashoro)
-   - [👤 **Festus Enning [member 4]**](#👤-Festus-Enning)
-   - [👤 **Vahe Stepanyan [member 5]**](#👤-Vahe-Stepanyan)
   - [🔭 Future Features ](#-future-features-)
   - [🤝 Contributing ](#-contributing-)
   - [⭐️ Show your support ](#️-show-your-support-)
@@ -76,7 +71,7 @@
 
  ## 🚀 Live Demo <a name="live-demo"></a>
 
-- [Live Demo](https://google.com)
+- [Live Demo](https://health-book-doc.onrender.com/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
