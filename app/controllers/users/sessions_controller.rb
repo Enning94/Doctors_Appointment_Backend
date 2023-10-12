@@ -69,9 +69,11 @@ class Users::SessionsController < Devise::SessionsController
   end
 
   def create_admin(admin_key)
-    # @c_user = User.find_by(email: login) || User.find_by(username: login)
-    return unless current_user && admin_key == ENV['ADMIN_SECRET_KEY']
-
-    current_user.update(admin: true)
+    # Assuming current_user is already defined
+    if admin_key == ENV['ADMIN_SECRET_KEY']
+      current_user.update(admin: true)
+    else
+      current_user.update(admin: false)
+    end
   end
 end
