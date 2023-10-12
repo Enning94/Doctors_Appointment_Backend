@@ -10,22 +10,22 @@ class Users::SessionsController < Devise::SessionsController
       sign_in(resource_name, resource)
       yield resource if block_given?
       create_admin(sign_in_params[:admin_key])
-      
+
       render json: {
         status: {
           code: 200,
-          message: 'Logged in successfully.',
-          # jwt: token,
-          data: { user: UserSerializer.new(resource).serializable_hash[:data][:attributes] }
+          message: 'Logged in successfully'
+        },
+        data: {
+          user: UserSerializer.new(resource).serializable_hash[:data][:attributes]
         }
       }, status: :ok
-
-     
-
     else
       render json: {
-        status: 401,
-        message: 'Invalid email/username or password.'
+        status: {
+          code: 401,
+          message: 'Invalid email/username or password'
+        }
       }, status: :unauthorized
     end
   end
