@@ -12,7 +12,7 @@ RSpec.describe Users::SessionsController, type: :controller do
   describe 'POST #create' do
     context 'with valid login credentials' do
       it 'logs in successfully' do
-        User.create(name: 'test', username: 'testuser', email: 'test@example.com', password: 'password')
+        user = User.create(name: 'test', username: 'testuser', email: 'test@example.com', password: 'password')
 
         post :create, params: {
           user: {
@@ -27,7 +27,7 @@ RSpec.describe Users::SessionsController, type: :controller do
         json_response = JSON.parse(response.body)
         expect(json_response['status']['message']).to eq('Logged in successfully.')
         expect(json_response['status']['code']).to eq(200)
-        expect(json_response['status']['data']['user']['email']).to eq('test@example.com')
+        expect(json_response['data']['user']['email']).to eq(user.email)
         # Add more expectations as needed for the JSON response
       end
     end
@@ -46,8 +46,8 @@ RSpec.describe Users::SessionsController, type: :controller do
         # Manually parse JSON response
         json_response = JSON.parse(response.body)
 
-        expect(json_response['message']).to eq('Invalid email/username or password.')
-        expect(json_response['status']).to eq(401)
+        expect(json_response['status']['message']).to eq('Invalid email/username or password.')
+        expect(json_response['status']['code']).to eq(401)
       end
     end
   end

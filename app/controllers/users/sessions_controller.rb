@@ -14,7 +14,7 @@ class Users::SessionsController < Devise::SessionsController
       render json: {
         status: {
           code: 200,
-          message: 'Logged in successfully'
+          message: 'Logged in successfully.'
         },
         data: {
           user: UserSerializer.new(resource).serializable_hash[:data][:attributes]
@@ -24,7 +24,7 @@ class Users::SessionsController < Devise::SessionsController
       render json: {
         status: {
           code: 401,
-          message: 'Invalid email/username or password'
+          message: 'Invalid email/username or password.'
         }
       }, status: :unauthorized
     end
