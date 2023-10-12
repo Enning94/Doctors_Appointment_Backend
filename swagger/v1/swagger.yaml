@@ -1,0 +1,444 @@
+---
+openapi: 3.0.1
+components:
+  securitySchemes:
+    bearer_auth:
+      type: http
+      scheme: bearer
+info:
+  title: Welcome to the Doctors Appointment API Documentation
+  version: v1
+  description: "Our API is organized with [REST](https://en.wikipedia.org/wiki/REST).
+    Our API has predictable resource-oriented URLs, accepts form-encoded request bodies,
+    returns JSON-encoded responses, and uses standard HTTP response codes, authentication,
+    and verbs. \n        It's a simple API that is linked to the [Doctors-Appointment-FrontEnd](https://github.com/adarachel/doctors-appointment-frontend).
+    \n        It holds all the data for the frontend to display, as well as the information
+    of the users (Usernames, Emails & Passwords).\n    \n        ### Here's how to
+    access protected endpoints:\n    \n          1. Log in using your credentials.\n
+    \   \n          2. In the response headers, find the 'Authorization' field.\n
+    \   \n          3. Copy the JWT Token from the 'Authorization' field.\n    \n
+    \         4. In your subsequent requests to protected endpoints, include the copied
+    token in the 'Authorization' header as 'Bearer YOUR_TOKEN_HERE.'"
+paths:
+  "/signup":
+    post:
+      summary: Create new User
+      description: "\n      \n      - This Endpoint uses a POST request to create
+        a new user."
+      tags:
+      - Authenticate User
+      parameters: []
+      responses:
+        '200':
+          description: Signed up successfully
+          content:
+            application/json:
+              examples:
+                example_0:
+                  value:
+                    code: 200
+                    message: Signed up successfully
+                    user:
+                      id: 1
+                      name: John Doe
+                      username: JohnDoe
+                      email: johndoe@gmail.com
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                      example: John Doe
+                    username:
+                      type: string
+                      example: JohnDoe
+                    email:
+                      type: string
+                      example: johndoe@gmail.com
+                    password:
+                      type: string
+                      example: johndoe123
+  "/login":
+    post:
+      summary: Logs in a User/Admin
+      description: " \n    - This endpoint allows you to log in as a user or admin.
+        Upon successful login, a JWT Token is generated and included in the response
+        headers under the 'Authorization' field.\n\n        - To log in as an admin,
+        include the 'admin_key' in your login parameters.\n       \n        - To log
+        in as a normal user, you can omit the 'admin_key.'"
+      tags:
+      - Authenticate User
+      parameters: []
+      responses:
+        '200':
+          description: Logged in successfully
+          content:
+            application/json:
+              examples:
+                example_0:
+                  value:
+                    code: 200
+                    message: Logged in successfully
+                    user:
+                      id: 1
+                      name: John Doe
+                      username: JohnDoe
+                      email: johndoe@gmail.com
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user:
+                  type: object
+                  properties:
+                    login:
+                      type: string
+                      example: johndoe@gmail.com
+                    admin_key:
+                      type: string
+                    password:
+                      type: string
+                      example: johndoe123
+  "/api/v1/appointments":
+    post:
+      summary: Creates an appointment
+      description: "\n        \n        - This Endpoint uses a POST request to create
+        an A API EndPointsppointment for a signed in user."
+      tags:
+      - Appointments API EndPoints
+      security:
+      - bearer_auth: []
+      parameters: []
+      responses:
+        '201':
+          description: Appointment created successfully ✅
+          content:
+            application/json:
+              examples:
+                example_0:
+                  value:
+                    message: Appointment created successfully ✅
+                    appointment:
+                      id: 1
+                      user_id: 1
+                      doctor_id: 1
+                      appointment_date: '2020-02-02T03:30:44.709Z'
+                      city: Accra
+                      appointment_duration: 2
+                      facility_fee: '200.0'
+                      created_at: '2023-10-07T06:43:34.490Z'
+                      updated_at: '2023-10-07T06:43:34.490Z'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                doctor_id:
+                  type: integer
+                  example: 1
+                appointment_date:
+                  type: string
+                  format: datetime
+                  example: '2020-02-20'
+                city:
+                  type: string
+                  example: Accra
+                appointment_duration:
+                  type: integer
+                  example: 2
+                facility_fee:
+                  type: number
+                  example: 100
+          application/xml:
+            schema:
+              type: object
+              properties:
+                doctor_id:
+                  type: integer
+                  example: 1
+                appointment_date:
+                  type: string
+                  format: datetime
+                  example: '2020-02-20'
+                city:
+                  type: string
+                  example: Accra
+                appointment_duration:
+                  type: integer
+                  example: 2
+                facility_fee:
+                  type: number
+                  example: 100
+    get:
+      summary: Retrieve all appointments
+      description: "\n        \n        - This Endpoint uses a GET request to Retrieve
+        all Appointments."
+      tags:
+      - Appointments API EndPoints
+      security:
+      - bearer_auth: []
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                      example: 1
+                    patient_id:
+                      type: integer
+                      example: 1
+                    doctor_id:
+                      type: integer
+                      example: 1
+                    appointment_date:
+                      type: string
+                      format: datetime
+                      example: '2020-02-20T03:30:44.709Z'
+                    city:
+                      type: string
+                      example: Accra
+                    appointment_duration:
+                      type: integer
+                      example: 2
+                    facility_fee:
+                      type: number
+                      example: 100
+                    created_at:
+                      type: string
+                      format: datetime
+                      example: '2023-10-07T06:43:34.490Z'
+                    updated_at:
+                      type: string
+                      format: datetime
+                      example: '2023-10-07T06:43:34.490Z'
+  "/api/v1/doctors":
+    post:
+      summary: Creates a doctor
+      description: "\n\n        - This Endpoint uses a POST request to create a Doctor.\n
+        \   \n        - Only Users signed in as Admin are authorized to access this
+        Endpoint"
+      tags:
+      - Doctors API EndPoints
+      security:
+      - bearer_auth: []
+      parameters: []
+      responses:
+        '201':
+          description: Doctor successfully created✅
+          content:
+            application/json:
+              examples:
+                example_0:
+                  value:
+                    message: Doctor created successfully ✅
+                    doctor:
+                      id: 1
+                      name: Dr. John
+                      profile_pic: https://media.istockphotouPzb9HMiy9OC4=
+                      bio: Lorem Lorem Lorem
+                      specialization: Dentist
+                      consultation_fee: 200
+                      created_at: '2023-10-07T06:43:34.490Z'
+                      updated_at: '2023-10-07T06:43:34.490Z'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: Dr. John
+                profile_pic:
+                  type: string
+                  example: https://media.istockphotouPzb9HMiy9OC4=
+                bio:
+                  type: string
+                  example: Lorem Lorem Lorem
+                specialization:
+                  type: string
+                  example: Dentist
+                consultation_fee:
+                  type: number
+                  example: 200
+          application/xml:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: Dr. John
+                profile_pic:
+                  type: string
+                  example: https://media.istockphotouPzb9HMiy9OC4=
+                bio:
+                  type: string
+                  example: Lorem Lorem Lorem
+                specialization:
+                  type: string
+                  example: Dentist
+                consultation_fee:
+                  type: number
+                  example: 200
+    get:
+      summary: Retrieves all doctors
+      description: "\n        \n        - This Endpoint uses GET request to retrieve
+        all Doctors"
+      tags:
+      - Doctors API EndPoints
+      security:
+      - bearer_auth: []
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                      example: 1
+                    name:
+                      type: string
+                      example: Dr. John
+                    profile_pic:
+                      type: string
+                      example: https://media.istockphotouPzb9HMiy9OC4=
+                    bio:
+                      type: string
+                      example: Lorem Lorem Lorem
+                    specialization:
+                      type: string
+                      example: Dentist
+                    consultation_fee:
+                      type: number
+                      example: 200
+                    created_at:
+                      type: string
+                      format: datetime
+                      example: '2023-10-07T06:43:34.490Z'
+                    updated_at:
+                      type: string
+                      format: datetime
+                      example: '2023-10-07T06:43:34.490Z'
+  "/api/v1/doctors/{id}":
+    get:
+      summary: Retrieves a doctor
+      description: "\n        \n        - This Endpoint uses GET request to retrieve
+        a specific Doctor detail"
+      tags:
+      - Doctors API EndPoints
+      security:
+      - bearer_auth: []
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 1
+                  name:
+                    type: string
+                    example: Dr. John
+                  profile_pic:
+                    type: string
+                    example: https://media.istockphotouPzb9HMiy9OC4=
+                  bio:
+                    type: string
+                    example: Lorem Lorem Lorem
+                  specialization:
+                    type: string
+                    example: Dentist
+                  consultation_fee:
+                    type: number
+                    example: 200
+                  created_at:
+                    type: string
+                    format: datetime
+                    example: '2023-10-07T06:43:34.490Z'
+                  updated_at:
+                    type: string
+                    format: datetime
+                    example: '2023-10-07T06:43:34.490Z'
+            application/xml:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 1
+                  name:
+                    type: string
+                    example: Dr. John
+                  profile_pic:
+                    type: string
+                    example: https://media.istockphotouPzb9HMiy9OC4=
+                  bio:
+                    type: string
+                    example: Lorem Lorem Lorem
+                  specialization:
+                    type: string
+                    example: Dentist
+                  consultation_fee:
+                    type: number
+                    example: 200
+                  created_at:
+                    type: string
+                    format: datetime
+                    example: '2023-10-07T06:43:34.490Z'
+                  updated_at:
+                    type: string
+                    format: datetime
+                    example: '2023-10-07T06:43:34.490Z'
+    delete:
+      summary: Deletes a doctor
+      description: "\n\n        - This Endpoint uses a DELETE request to delete/remove
+        a Doctor.\n    \n        - Only Users signed in as Admin are authorized to
+        access this Endpoint"
+      tags:
+      - Doctors API EndPoints
+      security:
+      - bearer_auth: []
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '201':
+          description: Doctor successfully deleted❌
+servers:
+- url: http://localhost:3000
+  variables:
+    defaultHost:
+      default: http://localhost:3000
+- url: https://doctors-appointment-0mkx.onrender.com
