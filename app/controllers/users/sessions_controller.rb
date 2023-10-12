@@ -20,14 +20,13 @@ class Users::SessionsController < Devise::SessionsController
         data: {
 
           user: UserSerializer.new(resource).serializable_hash[:data][:attributes]
-         }
+        }
       }, status: :ok
 
     else
       render json: {
-        status: {  code: 401,
-          message: 'Invalid email/username or password.'
-        }
+        status: { code: 401,
+                  message: 'Invalid email/username or password.' }
       }, status: :unauthorized
     end
   end
@@ -72,11 +71,11 @@ class Users::SessionsController < Devise::SessionsController
   end
 
   def create_admin(admin_key)
-      # Assuming current_user is already defined
-      if admin_key == ENV['ADMIN_SECRET_KEY']
-        current_user.update(admin: true)
-      else
-        current_user.update(admin: false)
-      end
+    # Assuming current_user is already defined
+    if admin_key == ENV['ADMIN_SECRET_KEY']
+      current_user.update(admin: true)
+    else
+      current_user.update(admin: false)
+    end
   end
 end
